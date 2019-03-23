@@ -1,0 +1,31 @@
+<!--
+  Generated template for the PrincipalPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+  <ion-navbar>
+    <ion-title>Principal</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+
+    <script src="dado.ts"></script>
+
+    <ion-list>
+            <img src = "./assets/imgs/face1.png" alt="dado" id="face">
+          
+    <ion-item>
+        <ion-input type="text" [(ngModel)]="numeroEscolhido" placeholder="Digite sua aposta"></ion-input>
+      </ion-item>
+
+    </ion-list>  
+    <button ion-button color="dark" full icon-start (click)="jogar()">
+    Jogar
+  </button>
+
+  
+
+</ion-content>
