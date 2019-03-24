@@ -21,6 +21,7 @@ export class PrincipalPage {
   }
 
   jogar(){
+    
     var sortear = Math.floor(Math.random() * 6 + 1);
 
     switch(sortear){
@@ -67,7 +68,7 @@ export class PrincipalPage {
     }
     
   }
-
+  
   ganhou(valor: String){
     
     let alert = this.alertCrtl.create({
