@@ -6,28 +6,32 @@
 -->
 <ion-header>
   <ion-navbar>
-    <ion-title>Principal</ion-title>
+    <ion-title>Jogo de Dados</ion-title>
   </ion-navbar>
 </ion-header>
 
 <!----CORPO-->
-<ion-content padding>
+<ion-content padding class="background">
 
     <!--Chamando o typescript-->
     <script src="dado.ts"></script>
-
+    TENTE A SORTE
     <ion-list>
-            <img src = "./assets/imgs/face1.png" alt="dado" id="face">
-          
+        <ion-avatar class="configimg">
+          <img src = "./assets/imgs/dadoGif.gif" alt="gifdado" id="gifdado" id="face">
+     
+        </ion-avatar>
+
     <ion-item>     <!--Recebendo dado do usuário-->
         <ion-input type="text" [(ngModel)]="numeroEscolhido" placeholder="Digite sua aposta"></ion-input>
       </ion-item>
 
-    </ion-list>  
+    </ion-list>
     <button ion-button color="dark" full icon-start (click)="jogar()">
+        <ion-icon name="play"></ion-icon>
     Jogar
   </button>
 
-  
+
 
 </ion-content>

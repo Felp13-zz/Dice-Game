@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
+import { HomePage } from '../home/home';
 
 /**
  * Generated class for the PrincipalPage page.
@@ -16,81 +17,130 @@ import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angu
 export class PrincipalPage {
 
   numeroEscolhido:string;
+  lado1:string;
+  lado2:string;
+  lado3:string;
+  lado4:string;
+  lado5:string;
+  lado6:string;
+  dadoGif:string;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public alertCrtl: AlertController) {
-  }
+  constructor(public navCtrl: NavController, public navParams: NavParams, public alertCrtl: AlertController) {}
 
   jogar(){
-    
+
     var sortear = Math.floor(Math.random() * 6 + 1);
+    let resultado = parseInt(this.numeroEscolhido);
+   
 
     switch(sortear){
 
+      case 0:{
+        this.dadoGif = (<HTMLInputElement>document.getElementById("gifdado")).src ="./assets/imgs/dadoGif.gif";
+        break;
+      }
+
       case 1:{
-        var lado1 = (<HTMLInputElement>document.getElementById("face")).src ="./assets/imgs/face1.png";    
-        break; 
+        this.lado1 = (<HTMLInputElement>document.getElementById("face")).src ="./assets/imgs/face1.png";
+        break;
       }
         case 2:{
-        var lado2 = (<HTMLInputElement>document.getElementById("face")).src ="./assets/imgs/face2.png"; 
+        this.lado2 = (<HTMLInputElement>document.getElementById("face")).src ="./assets/imgs/face2.png";
         break;
         }
         case 3:{
-        var lado3 = (<HTMLInputElement>document.getElementById("face")).src ="./assets/imgs/face3.png"; 
+        this.lado3 = (<HTMLInputElement>document.getElementById("face")).src ="./assets/imgs/face3.png";
         break;
         }
         case 4:{
-        var lado4 = (<HTMLInputElement>document.getElementById("face")).src ="./assets/imgs/face4.png"; 
+        this.lado4 = (<HTMLInputElement>document.getElementById("face")).src ="./assets/imgs/face4.png";
         break;
         }
         case 5:{
-        var lado5 = (<HTMLInputElement>document.getElementById("face")).src ="./assets/imgs/face5.png"; 
+        this.lado5 = (<HTMLInputElement>document.getElementById("face")).src ="./assets/imgs/face5.png";
         break;
         }
         case 6:{
-        var lado6 = (<HTMLInputElement>document.getElementById("face")).src ="./assets/imgs/face6.png"; 
+        this.lado6 = (<HTMLInputElement>document.getElementById("face")).src ="./assets/imgs/face6.png";
         break;
-        }       
+        }
         default:{
-          alert("Escolha um número de 1 a 6!");
+          alert("Informe um número de 1 a 6.");
         break;
         }
 
     }
-  
-    let resultado = parseInt(this.numeroEscolhido)
-
+       
+    /*Comparando o valor informado pelo usuário e o número randomico gerado.*/ 
     if(resultado == sortear)
-    {    
-      this.ganhou(resultado.toString()); 
+    {
+      this.ganhou(resultado.toString());
     }
     else{
       this.perdeu(resultado.toString());
     }
-    
+
   }
-  
+
+  /*Função para informar ao usuário que ele acertou.*/    
   ganhou(valor: String){
-    
+
     let alert = this.alertCrtl.create({
-    title: 'Resultado',
-    subTitle: `Parabéns, você acertou!: ${valor}`,
-    buttons:['Ok']
+      title: 'Você acertou',
+      subTitle: `Número da sorte: ${valor}`,
+      message: `Miseravi, acertou! Quer jogar novamente?`,
+    buttons:[
+      {
+      text:'Sim',
+      /*Evento para retornar a tela principal do jogo*/ 
+      handler: () => {
+        /*Refresh da page*/ 
+        this.navCtrl.setRoot(this.navCtrl.getActive().component);
+      }  
+      },
+    {
+      text:'Não',
+      /*Evento para retornar a tela HOME do jogo*/
+      handler: () => {
+        /*Refresh da page*/ 
+        this.navCtrl.setRoot(HomePage);
+      }
+    } 
+  ]
     });
 
   alert.present();
 }
 
+/*Função para informar ao usuário que ele errou.*/
 perdeu(valor: String){
-    
+
   let alert = this.alertCrtl.create({
-  title: 'Resultado',
-  subTitle: `Você errou, tente novamente!: ${valor}`,
-  buttons:['Ok']
+    title: 'Você errou',
+    subTitle: `Número do azar: ${valor}`,
+    message: `A máquina te ganhou, eu não deixava. Quer jogar novamente?`,
+  buttons:[
+    {
+      text:'Sim',
+      /*Evento para retornar a tela principal do jogo*/
+      handler: () => {
+        /*Refresh da page*/ 
+        this.navCtrl.setRoot(this.navCtrl.getActive().component);
+      }  
+      },
+    {
+      text:'Não',
+      /*Evento para retornar a tela HOME do jogo*/
+      handler: () => {
+        /*Refresh da page*/ 
+        this.navCtrl.setRoot(HomePage);
+      }
+    } 
+  ]
   });
 
 alert.present();
 }
-
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad PrincipalPage');
