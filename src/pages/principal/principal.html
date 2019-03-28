@@ -1,0 +1,37 @@
+<!--
+  Generated template for the PrincipalPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+  <ion-navbar>
+    <ion-title>Jogo de Dados</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<!----CORPO-->
+<ion-content padding class="background">
+
+    <!--Chamando o typescript-->
+    <script src="dado.ts"></script>
+    TENTE A SORTE
+    <ion-list>
+        <ion-avatar class="configimg">
+          <img src = "./assets/imgs/dadoGif.gif" alt="gifdado" id="gifdado" id="face">
+     
+        </ion-avatar>
+
+    <ion-item>     <!--Recebendo dado do usuário-->
+        <ion-input type="text" [(ngModel)]="numeroEscolhido" placeholder="Digite sua aposta"></ion-input>
+      </ion-item>
+
+    </ion-list>
+    <button ion-button color="dark" full icon-start (click)="jogar()">
+        <ion-icon name="play"></ion-icon>
+    Jogar
+  </button>
+
+
+
+</ion-content>

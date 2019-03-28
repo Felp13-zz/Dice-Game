@@ -1,0 +1,33 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      Jogo de Dados
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding class="fundo" >
+
+  <ion-list>
+    <ion-avatar class="avatar">
+      <img src="./assets/imgs/icon.png">
+     </ion-avatar>
+     TENTE A SORTE
+</ion-list>
+
+<button ion-button color="dark" full icon-start (click)="openPrincipal()">
+<ion-icon name="md-game-controller-a"></ion-icon>
+Tentar a sorte
+</button>
+
+<button ion-button color="dark" full icon-start (click)="sobre()">
+    <ion-icon ios="ios-information-circle" md="md-information-circle"></ion-icon>
+  Sobre
+  </button>
+
+  <button ion-button color="dark" full icon-start (click)="ajuda()">
+      <ion-icon ios="ios-help" md="md-help"></ion-icon>
+  Ajuda
+  </button>
+
+</ion-content>
